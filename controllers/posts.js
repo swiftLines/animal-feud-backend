@@ -11,16 +11,28 @@ function index (req, res) {
   })
 }
 
-function show (req, res) {
-
+function create (req, res) {
+  Post.create(req.body)
+  .then(post => res.json(post))
+  .catch(err => res.json(err))
 }
 
-function create (req, res) {
-  
+function show (req, res) {
+  Post.findById(req.params.id)
+  .then(post => res.json(post))
+  .catch(err => res.json(err))
+}
+
+function deletePost (req, res) {
+  Post.findByIdAndDelete(req.params.id)
+  .then(post => res.json(post))
+  .catch(err => res.json(err))
 }
 
 export {
   index,
   create,
   show,
+  deletePost as delete,
+  
 }
