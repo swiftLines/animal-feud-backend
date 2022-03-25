@@ -12,7 +12,7 @@ const postSchema =new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId, ref:"Profile"
   },
-  content: String,
+  content: {type: String, required: true},
   photo:{type: String},
   isFact: Boolean,
   evidence: [evidenceSchema],
