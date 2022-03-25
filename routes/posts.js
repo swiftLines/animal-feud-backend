@@ -1,12 +1,12 @@
 import { Router } from "express";
 import * as postsCtrl from '../controllers/posts.js'
-import { decodeUserFromToken, checkAuth } from "../middleware/auth.js";
+// import { decodeUserFromToken, checkAuth } from "../middleware/auth.js";
 
 const router = Router()
 
 router.get('/', postsCtrl.index)
 
-router.get('/:id', postsCtrl)
+router.get('/:id', postsCtrl.show)
 
 router.post('/:id', postsCtrl.create)
 

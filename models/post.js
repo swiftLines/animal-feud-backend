@@ -1,9 +1,9 @@
-import { links } from "express/lib/response";
+
 import mongoose  from "mongoose";
 
 const Schema = mongoose.Schema 
 
-evidenceSchema = new mongoose.Schema({
+const evidenceSchema = new Schema({
   source: String,
   notes: String, 
 })
