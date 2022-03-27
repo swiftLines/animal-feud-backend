@@ -12,15 +12,28 @@ function index (req, res) {
   })
 }
 
-function create (req, res) {
-  console.log(req.body)
+// async function create (req, res) {
+//   const newPost = await Post.create(req.body)
+//   const foundPost = await Post.findById(newPost._id)
+//   foundPost.populate('owner')
+//   .then(post => res.json(post))
+//   .catch(err => res.json(err))
+// }
+function create(req, res) {
+  req.body.owner = req.user.profile
   Post.create(req.body)
-  .then(post => res.json(post))
+  .then(post => {
+    post.populate('owner')
+    .then(populatedPost => {
+      res.json(populatedPost)
+    })
+  })
   .catch(err => res.json(err))
 }
 
 function show (req, res) {
   Post.findById(req.params.id)
+  .populate('owner')
   .then(post => res.json(post))
   .catch(err => res.json(err))
 }
