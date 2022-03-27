@@ -2,7 +2,6 @@ import 'dotenv/config.js'
 import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
-import axios from 'axios'
 
 import { router as profilesRouter } from './routes/profiles.js'
 import { router as authRouter } from './routes/auth.js'
