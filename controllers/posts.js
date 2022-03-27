@@ -13,6 +13,7 @@ function index (req, res) {
 }
 
 function create (req, res) {
+  console.log(req.body)
   Post.create(req.body)
   .then(post => res.json(post))
   .catch(err => res.json(err))
