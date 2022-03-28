@@ -44,9 +44,16 @@ function deletePost (req, res) {
   .catch(err => res.json(err))
 }
 
+function update (req, res) {
+  Post.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  .then(post => res.json(post))
+  .catch(err => res.json(err))
+}
+
 export {
   index,
   create,
   show,
-  deletePost as delete
+  deletePost as delete,
+  update,
 }
