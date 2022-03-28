@@ -48,6 +48,5 @@ export {
   index,
   create,
   show,
-  deletePost as delete,
-  
+  deletePost as delete
 }

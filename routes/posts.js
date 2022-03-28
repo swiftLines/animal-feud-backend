@@ -4,6 +4,7 @@ import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
 
+
 router.get('/', postsCtrl.index)
 
 router.get('/:id', postsCtrl.show)
