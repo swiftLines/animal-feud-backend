@@ -78,10 +78,21 @@ function update (req, res) {
   .catch(err => res.json(err))
 }
 
+function createEvidence(req, res){
+  Post.findById(req.params.id)
+  .then(post => {
+    post.evidence.push(req.body)
+    post.save()
+    .then(postEvidence => {res.json(postEvidence)})
+  })
+  .catch(err => res.json(err))
+}
+
 export {
   index,
   create,
   show,
   deletePost as delete,
   update,
+  createEvidence,
 }
