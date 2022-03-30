@@ -3,6 +3,6 @@ import * as commentsCtrl from "../controllers/comments.js"
 
 const router = Router()
 
-router.post('/:id', commentsCtrl.create)
+router.post('/:postId', commentsCtrl.create)
 
 export{router}

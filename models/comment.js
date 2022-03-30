@@ -1,10 +1,12 @@
 import mongoose from 'mongoose'
 
-const commentSchema = new mongoose.Schema({
+const Schema = mongoose.Schema
+
+const commentSchema = new Schema({
+  content: String,
   owner: {
     type: mongoose.Schema.Types.ObjectId, ref:"Profile"
   },
-  content: String,
   createdAt: {type: Date, required: true, default: Date.now}
 },{
   timestamps: true,
