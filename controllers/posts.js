@@ -62,7 +62,7 @@ function createEvidence(req, res){
 
 export {
   index,
-  create,
+  create, 
   show,
   deletePost as delete,
   update,
