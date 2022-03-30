@@ -11,6 +11,7 @@ router.get('/', commentsCtrl.new)
 
 router.use(decodeUserFromToken)
 
+//router.post('/:postId', checkAuth, commentsCtrl.create)
 
 
 export{router}
