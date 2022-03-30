@@ -15,27 +15,20 @@ function index (req, res) {
   })
 }
 
-// async function create (req, res) {
-//   const newPost = await Post.create(req.body)
-//   const foundPost = await Post.findById(newPost._id)
-//   foundPost.populate('owner')
-//   .then(post => res.json(post))
-//   .catch(err => res.json(err))
-// }
 function create(req, res) {
   req.body.owner = req.user.profile
-  if (req.body.photo === 'undefined' || !req.files['photo']) {
+  if (req.body.photo === 'undefined') {
     delete req.body['photo']
     Post.create(req.body)
     .then(post => {
     post.populate('owner')
     .then(populatedPost => {
-    res.status(201).json(populatedPost)
+    res.json(populatedPost)
   })
 })
   .catch(err => {
     console.log(err)
-    res.status(500).json(err)
+    res.json(err)
   })
   
 } else {
@@ -47,12 +40,12 @@ function create(req, res) {
     .then(post => {
       post.populate('owner')
       .then(populatedPost => {
-        res.status(201).json(populatedPost)
+        res.json(populatedPost)
       })
     })
     .catch(err => {
       console.log(err)
-      res.status(500).json(err)
+      res.json(err)
     })
   })
 }
@@ -88,6 +81,16 @@ function createEvidence(req, res){
   .catch(err => res.json(err))
 }
 
+function addComment(req, res){
+  Post.findById(req.params.id)
+  .then(post => {
+    post.comments.push(req.body.commentId)
+    post.save()
+    .then(postComment => {res.json(postComment)})
+  })
+  .catch(err => res.json(err))
+}
+
 export {
   index,
   create, 
@@ -95,4 +98,5 @@ export {
   deletePost as delete,
   update,
   createEvidence,
+  addComment,
 }
