@@ -78,7 +78,10 @@ function createEvidence(req, res){
     post.save()
     .then(postEvidence => {res.json(postEvidence)})
   })
-  .catch(err => res.json(err))
+  .catch(err => {
+    console.log(err)
+    res.json(err)
+  })
 }
 
 function addComment(req, res){
