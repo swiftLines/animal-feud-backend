@@ -15,7 +15,9 @@ router.post('/', checkAuth, postsCtrl.create)
 
 router.put('/:id', checkAuth, postsCtrl.update)
 
-router.post('/:id/evidence', checkAuth, postsCtrl.createEvidence)
+router.post('/:id', checkAuth, postsCtrl.createEvidence)
+
+router.post('/:postId/comments', checkAuth, postsCtrl.addComment)
 
 router.delete('/:id', checkAuth, postsCtrl.delete)
 

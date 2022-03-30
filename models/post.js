@@ -16,7 +16,7 @@ const postSchema =new mongoose.Schema({
   photo:{type: String},
   isFact: Boolean,
   evidence: [evidenceSchema],
-  comments: [{type: mongoose.Schema.Types.ObjectId, ref:"Comment"}],
+  comments: [{type: Schema.Types.ObjectId, ref:"Comment"}],
   createdAt: { type: Date, required: true, default: Date.now }
 },{
   timestamps: true,
