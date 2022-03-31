@@ -6,7 +6,7 @@ import {v2 as cloudinary} from 'cloudinary'
 function index (req, res) {
   Post.find({})
   .populate('owner')
-  
+  .populate('comments')
   .then(posts => {
     res.json(posts)
   })
