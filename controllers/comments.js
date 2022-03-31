@@ -1,4 +1,5 @@
 import { Comment } from "../models/comment.js"
+import { Post } from "../models/post.js"
 
 function newComment (req, res){
 Comment.find({})
@@ -10,8 +11,12 @@ function create(req, res){
   // req.body.owner = req.user.profile
   Comment.create(req.body)
   .then(comment => {
-    comment.populate('owner')
-    .then(populatedComment => {res.json(populatedComment)})
+    Post.findById(req.params.postId).then(post => {
+      post.comments.push(comment._id)
+      post.save()
+      res.json(comment)
+    })
+    // .then(populatedComment => {res.json(populatedComment)})
   }) 
   .catch(err => res.json(err))
 }
