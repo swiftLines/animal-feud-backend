@@ -17,6 +17,7 @@ function index (req, res) {
 
 function create(req, res) {
   req.body.owner = req.user.profile
+  req.body.isFact = !!req.body.isFact
   if (req.body.photo === 'undefined') {
     delete req.body['photo']
     Post.create(req.body)

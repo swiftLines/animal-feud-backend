@@ -8,6 +8,7 @@ Comment.find({})
 }
 
 function create(req, res){
+  // req.body.owner = req.user.profile
   Comment.create(req.body)
   .then(comment => {
     Post.findById(req.params.postId).then(post => {
